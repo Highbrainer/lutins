@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <style>
+    
+
+    .card {
+      cursor: pointer;
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 245px;
+      height: 342px; 
+      /* width: 80%;
+      height:30%; */
+      -webkit-transition: all 100ms ease-in;
+      -moz-transition: all 100ms ease-in;
+      transition: all 100ms ease-in;
+      -webkit-filter: brightness(1.8) grayscale(0.4) opacity(.7);
+      -moz-filter: brightness(1.8) grayscale(0.4) opacity(.7);
+      filter: brightness(1.8) grayscale(0.4) opacity(.7);
+    }
+
+    .card:hover {
+      -webkit-filter: brightness(1.2) grayscale(.2) opacity(.9);
+      -moz-filter: brightness(1.2) grayscale(.2) opacity(.9);
+      filter: brightness(1.2) grayscale(.2) opacity(.9);
+    }
+
+
+    /* add a bit of responsiveness ! */
+    /* span img {
+      width: 33.3333%;
+      float: left;
+    } */
+    
+    span, span label, span label img {
+      /* width: 33.3333%; */
+      width: 245px;
+      height: 342px;
+      float: left;
+    }
+
+    /* span img {
+      display: block;
+      height: auto;
+      width: 100%;
+    } */
+
+    /* Show one image on devices under 540px */
+    /* @media screen and (max-width: 250px) {
+      span {
+        width: 100%;
+        float: left;
+      }
+    }
+    @media screen and (min-width: 250px) and (max-width: 500px) {
+      span {
+        width: 50%;
+        float: left;
+      }
+    }
+    @media screen and (min-width: 500px) and (max-width: 750px) {
+      span {
+        width: 33.3333%;
+        float: left;
+      }
+    }
+    @media screen and (min-width: 750px) and (max-width: 1000px) {
+      span {
+        width: 25%; 
+        float: left;
+      }
+    } */
+
+    /* @media only screen and (hover: none) and (pointer: coarse){
+
+     span, span label, span label img {
+      width:100%;
+      height:auto;
+     }
+
+    } */
+  </style>
+</head>
+ 
+<body>
+
+
+  <div class="container">
+    <h1>Ma famille</h1>
+    <form action="/choose">
+      <div th:each="member : ${#lists.sort(family, comparator)}">
+        <h2 th:text="${member.name}"></h2>
+        <h3 th:if="${member.organisateur}">Organisateur</h3>
+        <!-- <input th:id="|card${member.id}|" type="radio" name="choice" th:value="${member.id}" /> -->
+        <!-- <label class="card" th:for="|card${member.id}|" th:style="|background-image:url(${member.image});|"> -->
+          <img th:src="${member.image}" zzzwidth="50%" style="vertical-align: top;" height="342px"/><img th:src="${member.card}"  zzzwidth="50%"/>
+          <!-- </label> -->
+          <span th:if="${member.incompatibleMembers.size()}">Nombre de missions : <font th:text="${member.nbMissions}" />.</span>
+          <span th:if="${member.incompatibleMembers.size()}">Ne peut pas s'occuper de <font th:text="${member.incompatibleMembers.size()}"/> personnes&nbsp;:
+          <ul th:each="incompat : ${member.incompatibleMembers}">
+            <li th:text="${incompat.name}"></li>
+          </ul>
+          </span>
+          <img  th:each="mission : ${member.missions}" th:src="${mission.image}" zzzwidth="50%" style="vertical-align: top;" height="342px" th:alt="${mission.name}" th:title="${mission.name}" />
+          <hr/>
+        </div>
+    </form>
+  </div>
+
+</body>
+
+</html>

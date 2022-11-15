@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>Lutins - Home 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <img th:src="${user.image}" height="128px" style="float:right" />
+    <div>
+        <ul>
+            <h1>La fiche de <span th:text="${user.name}" /></h1>
+            <li><b>Adresse email de contact : </b><code th:text="${user.email}" /></li>
+            <li th:if="${user.incompatibleMembers.size()}"><b>Il y a
+                    <font th:text="${user.incompatibleMembers.size()}" /> personne<font
+                        th:if="${user.incompatibleMembers.size()>1}">s</font> dont
+                    <font th:text="${user.name}" /> ne peut pas être le lutin :
+                </b>
+                <span th:each="incompat : ${user.incompatibleMembers}" style="vertical-align: top;">
+                    <!-- <span th:text="${incompat.name}"/> -->
+                    <img th:src="${incompat.image}" height="64px" />
+                </span>
+            </li>
+            <li><b style="vertical-align: top;">La carte pokemon sous laquelle
+                    <font th:text="${user.name}" /> se cache - <i>à garder secret !!</i> :
+                </b>
+
+                <img th:src="${user.card}" />
+            </li>
+            <li><b>Nombre de <i>missions</i></b> :
+                <font th:text="${user.nbMissions}" /></b>
+            </li>
+            <li><b><i>Missions</i> déjà en cours</b> :
+                <font th:if="${user.missions.size()}" th:text="${user.missions.size()}" />
+                <font th:unless="${user.missions.size()}">Aucune</font>
+
+                <span th:each="profiteur : ${user.missions}" style="vertical-align: top;">
+                    <!-- <span th:text="${incompat.name}"/> -->
+                    <img th:src="${profiteur.image}" height="252px" />
+                </span>
+            </li>
+            <li th:if="${user.missions.size()&lt;user.nbMissions}"><button onclick="location='/choice'">Choisir une
+                    mission</button></li>
+
+        </ul>
+    </div>
+    <div th:if="${#sets.contains(roles, 'ROLE_ADMIN')}">Voir la <a href="/list">page d'administration</a>.</div>
+</body>
+
+</html>

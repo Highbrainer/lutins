@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Lutins - Choisir une mission</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+    let selectedProfiteur = undefined;
+    let modal;
+
+    function confirmer() {
+      modal = new bootstrap.Modal(document.getElementById('confirmModal'), {});
+      modal.show();
+    }
+
+    function confirmed() {
+      if (selectedProfiteur) {
+        let im = document.getElementById("image" + selectedProfiteur);
+        chosenImage.src = im.getAttribute("src2");
+        setTimeout(() => {
+          modal.hide();
+          window.location = "/choose?profiteur_id=" + selectedProfiteur;
+        }, 1000);
+
+
+      }
+    }
+
+    function choose(profiteur_id) {
+      // document.getElementById("input" + profiteur_id).click();
+      let im = document.getElementById("image" + profiteur_id);
+
+      // if (im.classList.contains("selected")) {
+      //   im.classList.remove("selected");
+      //   if (selectedProfiteur === profiteur_id) {
+      //     selectedProfiteur = undefined;
+      //   }
+      // } else {
+        selectedProfiteur = profiteur_id;
+        // im.classList.add("selected");
+        // // deselect any other selected image
+        // for (let other of document.querySelectorAll("img.selected")) {
+        //   console.log("Handling " + other.id, other)
+        //   if (other == im) {
+        //     console.log("Ignore self")
+        //     continue;
+        //   }
+        //   console.log("click on " + other.id)
+        //   other.click();
+        // }
+
+      // }
+      // navDebug.innerText = pokemon(im) + " (" + profiteur_id + ")";
+      // chosenCard.innerText = pokemon(im);
+      chosenImage.src = im.src;
+      confirmer();
+    }
+
+    function pokemon(im) {
+      let ret = decodeURI(im.src).replace(/^.*\/(.*).png/gu, '$1');
+      console.log(ret, im.src);
+      return ret.charAt(0).toUpperCase() + ret.slice(1);
+    }
+  </script>
+
+  <!-- <style>
+    img.thumb {
+      /* position: absolute;
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
+  width: 100%;
+  height: 100%; */
+      border-radius: 1px;
+      box-shadow: 0 0 0 4px #fff;
+      cursor: pointer;
+      animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -o-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -ms-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -moz-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -webkit-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+    }
+
+    @keyframes unselected {
+      0% {
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      50% {
+        transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    @-o-keyframes unselected {
+      0% {
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      50% {
+        -o-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    @-ms-keyframes unselected {
+      0% {
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      50% {
+        width: 45%;
+        height: 45%;
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    @-moz-transition unselected {
+      0% {
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      50% {
+        -moz-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    @-webkit-keyframes unselected {
+      0% {
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      50% {
+        -webkit-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    .selected:before {
+      opacity: 1;
+    }
+
+    /* img selection */
+
+    .selected {
+      box-shadow: 0 0 0 4px #00c09e;
+      animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -o-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -ms-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -moz-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -webkit-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+    }
+
+    @keyframes selected {
+      0% {
+        border-color: #fff;
+      }
+
+      50% {
+        transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+    }
+
+    @-o-keyframes selected {
+      0% {
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      50% {
+        -o-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+    }
+
+    @-ms-keyframes selected {
+      0% {
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      50% {
+        width: 45%;
+        height: 45%;
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+    }
+
+    @-moz-transition selected {
+      0% {
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      50% {
+        -moz-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+    }
+
+    @-webkit-keyframes selected {
+      0% {
+        box-shadow: 0 0 0 4px #fff;
+      }
+
+      50% {
+        -webkit-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #00c09e;
+      }
+    }
+  </style> -->
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img th:src="${user.image}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+        Choisir un pokemon à lutiner...
+      </a>
+      <!-- <span class="navbar-text" id="navDebug">-</span> -->
+      <!-- <h1 class=".navbar-text"></h1> -->
+      <!-- <form action="/choose" id="f" method="GET">
+        <input th:each="member : ${family}" th:id="|input${member.id}|" type="radio" name="profiteur_id"
+          th:value="${member.id}" style="display:none" />
+        <button class="btn btn-success" type="submit">Confirmer</button>
+      </form> -->
+      <!-- <button type="button" class="btn btn-primary" onclick="confirmer()">Confirmer</button> -->
+      <a href="/" type="button" class="btn btn-close bg-light"></a>
+    </div>
+  </nav>
+
+  <div class="container text-center" style="margin-top:80px">
+    <div class="d-flex flex-wrap p-2 mx-auto">
+      <span style="padding:5px" th:each="member : ${family}" th:onclick="|choose(${member.id});|">
+        <!-- <label class="card" th:for="|card${member.id}|" zzzth:style="|background-image:url(${member.image});|" >           -->
+        <img zzzclass="thumb" th:src="${member.card}" th:id="|image${member.id}|"
+          style="transition-duration: 1900ms;transition-delay: 400ms;transform: 2s;opacity: 1;"
+          th:src2="${member.image}" />
+        <!-- <img th:src="${member.image}" th:id="|image${member.id}i|" style="transition-duration: 1900ms;transition-delay: 200ms;transform: 2s;opacity: 0.5;position:relative;top:0;left:0;" /> -->
+        <!--<img th:src="${member.image}" style="opacity: 0;margin: 5px";/> just to fill the span so it keeps the good size -->
+        <!-- </label> -->
+      </span>
+    </div>
+  </div>
+
+  <div class="modal fade" id="confirmModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">On est bien d'accord ?</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body ">
+          Choisir
+          <img id="chosenImage" width="252px" src="" class="d-block mx-auto"/>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" zzzdata-bs-dismiss="modal" onclick="confirmed();">Confirmer</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

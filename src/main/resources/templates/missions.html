@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <title>Lutins - Missions affectées</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+
+        body {
+            background-image: url("/images/xmas-pikachu.gif");
+            background-position: bottom right 10px;
+            background-repeat: no-repeat;
+            background-size: 300px;
+        }
+
+        @media only screen and (hover: none) and (pointer: coarse) {
+
+            img.photo, .card {
+                width: 100%;
+                height: auto;
+            }
+
+            body {
+                background-size: 100%;
+            }
+
+        }
+        
+        @media screen and (min-width: 1250px) and (max-width: 1500px) {
+
+            body {
+                background-size: 600px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img th:src="${user.image}" alt="Avatar Logo" style="height:64px;" class="rounded-pill">
+                Le site du Lutin <span th:text="${user.name}"></span> - Missions affectées
+            </a>
+            <!-- <span class="navbar-text" id="navDebug">-</span> -->
+            <!-- <h1 class=".navbar-text"></h1> -->
+            <!-- <form action="/choose" id="f" method="GET">
+        <input th:each="member : ${family}" th:id="|input${member.id}|" type="radio" name="profiteur_id"
+          th:value="${member.id}" style="display:none" />
+        <button class="btn btn-success" type="submit">Confirmer</button>
+      </form> -->
+            <!-- <button type="button" class="btn btn-primary" onclick="confirmer()">Confirmer</button> -->
+            <div th:if="${#sets.contains(roles, 'ROLE_ADMIN')}"><a href="/list">page d'administration</a></div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <!-- <div class="d-flex p-3 flex-wrap align-content-start">
+            <div class="card border bg-light m-2" >
+                <div class="card-body">
+                    <h5 class="card-title bg-primary text-white p-3">Adresse email de contact</h5>
+                    <p class="card-text text-center"><code th:text="${user.email}" /></p>
+                </div>
+            </div>
+
+            <div class="card border bg-light m-2" th:if="${user.incompatibleMembers.size()}">
+                <div class="card-body bg-light">
+                    <h5 class="card-title bg-primary text-white p-3">Je ne peux pas être le lutin de</h5>
+                    <p class="card-text"><span th:each="incompat : ${user.incompatibleMembers}"
+                            style="vertical-align: top;">
+                            <img class="photo" th:src="${incompat.image}" height="342px" />
+                        </span></p>
+                </div>
+            </div>
+        </div> -->
+        <div class="d-flex p-3 flex-wrap align-content-start" th:each="organisateur : ${organisateurs}">
+            <div class="card border bg-light m-2">
+                <div class="card-body">
+                    <h5 class="card-title bg-primary text-white p-3"  th:text="|${organisateur.name}|" ></h5>
+                    <p class="card-textb text-center">
+                        <span style="vertical-align: top;"><img class="photo" th:src="${organisateur.image}" height="342px" /></span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card border bg-light m-2" id="missions">
+                <div class="card-body">
+                    <h5 class="card-title bg-primary text-white p-3">Ses
+                        <font th:text="${organisateur.nbMissions}" /> missions : <font th:each="mission, iter : ${organisateur.missions}" th:text="|${(!iter.first && !iter.last)?', ':''}${iter.last&&!iter.first?' et ':''}${mission.name}|" />
+                    </h5>
+                    <p class="card-text text-center"><span th:each="profiteur : ${organisateur.missions}"
+                            style="vertical-align: top;">
+                            <!-- <span th:text="${incompat.name}"/> -->
+                            <img class="photo" th:src="${profiteur.image}" height="342px" />
+                        </span>
+                        <!-- ${user.nbMissions - user.missions.size()} -->
+
+                        <span th:if="${ organisateur.nbMissions > organisateur.missions.size() }"
+                            th:each="i : ${#numbers.sequence(organisateur.missions.size(), organisateur.nbMissions-1)}"
+                            style="vertical-align: top;">
+
+                            <a href="/choice"><img class="photo" src="/images/members/missing.png" height="342px" /></a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card border m-2 invisible" id="missions" style="height: 400px;">
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
