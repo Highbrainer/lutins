@@ -1,0 +1,32 @@
+version: '3.1'
+
+volumes:
+  santa_pg_data:
+
+services:
+  app:
+    image: 'santa-webapp:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    ports:
+      - 5000:5000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/santa
+      - SPRING_DATASOURCE_USERNAME=santa
+      - SPRING_DATASOURCE_PASSWORD=claus
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+          
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=santa
+      - POSTGRES_PASSWORD=claus
+    volumes:
+      - santa_pg_data:/var/lib/postgresql/data

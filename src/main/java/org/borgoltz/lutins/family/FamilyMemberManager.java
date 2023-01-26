@@ -74,6 +74,11 @@ public class FamilyMemberManager {
         FamilyMember olivier = new Profiteur(++i, "Olivier", "/images/pokemons/tygnon.png", "/images/members/olivier.png");
         FamilyMember maxime = new Profiteur(++i, "Maxime", "/images/pokemons/mystherbe.png", "/images/members/maxime.png");
 
+        if (dao.count()>24) {
+            System.out.println("Member table already populated !");
+            return;
+        }
+
         christian.setNbMissions(3);
 
         magali.setAdmin(true);
