@@ -5,9 +5,7 @@ volumes:
 
 services:
   app:
-    image: 'santa-webapp:latest'
-    build:
-      context: .
+    image: 'highbrainer/santa-webapp:latest'
     container_name: app
     depends_on:
       - db
