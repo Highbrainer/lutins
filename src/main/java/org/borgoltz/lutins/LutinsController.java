@@ -57,8 +57,8 @@ public class LutinsController {
     }
 
     @RequestMapping("/init")
-    String init(Map<String, Object> model) {
-        this.familyMemberManager.initDatabase();
+    String init(Map<String, Object> model, @RequestParam(defaultValue = "false") boolean force) {
+        this.familyMemberManager.initDatabase(force);
         return this.list(model);
     }
 
