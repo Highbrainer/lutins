@@ -5,45 +5,33 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Reference;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document
 public class FamilyMember {
     @Id
     private long id;
 
-    @Column
     private String name;
 
-    @Column
     private String card;
 
-    @Column
     private String image;
 
-    @Column
     private boolean organisateur = true;
 
-    @Column
     private boolean admin = false;
 
-    @Column
     private String email;
 
-    @Column(name = "nb_missions")
     private int nbMissions = 0;
 
-    @ManyToMany
-    @JoinTable(name = "member__incompatibles", joinColumns = @JoinColumn(name = "organisateur_id"), inverseJoinColumns = @JoinColumn(name = "incompatible_id"))
+    @Reference(FamilyMember.class)
     private Set<FamilyMember> incompatibleMembers = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "organisateur__missions", joinColumns = @JoinColumn(name = "organisateur_id"), inverseJoinColumns = @JoinColumn(name = "profiteur_id"))
+	@Reference(FamilyMember.class)
     private Set<FamilyMember> missions = new HashSet<>();
 
     public FamilyMember() {
