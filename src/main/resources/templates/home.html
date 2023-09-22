@@ -118,6 +118,8 @@
 
 
         </div>
+    
+	    <footer style="text-align: right;" th:with="version=${user.getClass().getPackage().getImplementationVersion()}"><span th:unless="${version == null}" th:text="${'Version ' + (version ?: 'inconnue')}"></span></footer>
 
     </div>
 
