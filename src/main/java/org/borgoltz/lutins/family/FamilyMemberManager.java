@@ -38,63 +38,55 @@ public class FamilyMemberManager {
 	}
 
 	public void initDatabase(boolean force) {
-		// this.jdbcTemplate.execute("DROP TABLE IF EXISTS " + this.tablename_members +
-		// "");
-		// this.jdbcTemplate.execute(
-		// "CREATE TABLE IF NOT EXISTS " + this.tablename_members + " (id integer
-		// PRIMARY KEY, name text, card text, image text, incompatibles integer[])");
-		int i = 0;
-
-		FamilyMember christian = new Organisateur(++i, "Christian", "/images/sports/arc.png",
-				"/images/members/christian.png", "christian.theou@gmail.com");
-		FamilyMember francoise = new Profiteur(++i, "Françoise", "/images/sports/badminton.png",
-				"/images/members/francoise.png");
-		FamilyMember magali = new Organisateur(++i, "Magali", "/images/sports/baseball.png",
-				"/images/members/magali.png", "magali.theou@gmail.com");
-		FamilyMember alexandre = new Organisateur(++i, "Alexandre", "/images/sports/basket.png",
-				"/images/members/alexandre.png", "alexandre@borgoltz.com");
-		FamilyMember maiann = new Organisateur(++i, "Maiann", "/images/sports/bmx.png",
-				"/images/members/maiann.png", "maiann.borgoltz@gmail.com");
-		FamilyMember louis = new Profiteur(++i, "Louis", "/images/sports/escalade.png", "/images/members/louis.png");
-		FamilyMember francois = new Organisateur(++i, "François", "/images/sports/danse.png",
-				"/images/members/francois.png", "f.theou@netc.fr");
-		FamilyMember chlouchlou = new Organisateur(++i, "Chlouchlou", "/images/sports/yoga.png",
-				"/images/members/chlouchlou2.png", "chloe.lahaye@free.fr");
-		FamilyMember colin = new Profiteur(++i, "Colin", "/images/sports/foot.png", "/images/members/colin.png");
-		FamilyMember elsa = new Profiteur(++i, "Elsa", "/images/sports/golf.png", "/images/members/elsa.png");
-		FamilyMember delphine = new Organisateur(++i, "Delphine", "/images/sports/grs.png",
-				"/images/members/delphine.png", "delf.theou@orange.fr");
-		FamilyMember benjamin = new Organisateur(++i, "Benjamin", "/images/sports/hand.png",
-				"/images/members/benjamin.png", "benjamin.casimir@orange.fr");
-		FamilyMember chiara = new Profiteur(++i, "Chiara", "/images/sports/hauteur.png",
-				"/images/members/chiara.png");
-		FamilyMember raphael = new Profiteur(++i, "Raphaël", "/images/sports/hockey.png",
-				"/images/members/raphael.png");
-		FamilyMember titouan = new Profiteur(++i, "Titouan", "/images/sports/karate.png",
-				"/images/members/titouan.png");
-		FamilyMember dun = new Profiteur(++i, "Dunvael", "/images/sports/muscu.png", "/images/members/dun.png");
-		FamilyMember philippe = new Organisateur(++i, "Philippe", "/images/sports/natation.png",
-				"/images/members/philippe.png", "keltia56@gmail.com");
-		FamilyMember colette = new Organisateur(++i, "Colette", "/images/sports/patinage.png",
-				"/images/members/colette.png", "donadiocolette@gmail.com");
-		FamilyMember maelle = new Profiteur(++i, "Maëlle", "/images/sports/perche.png", "/images/members/maelle.png");
-		FamilyMember lorenzo = new Profiteur(++i, "Lorenzo", "/images/sports/skate.png",
-				"/images/members/lorenzo.png");
-		FamilyMember jb = new Organisateur(++i, "Jean-Baptiste", "/images/sports/ski.png",
-				"/images/members/jb.png", "jb.theou@gmail.com");
-		FamilyMember rebecca = new Organisateur(++i, "Rebecca", "/images/sports/surf.png",
-				"/images/members/rebecca.png", "rebeccag000@gmail.com");
-		FamilyMember elena = new Profiteur(++i, "Elena", "/images/sports/tennis.png", "/images/members/elena.png");
-		FamilyMember olivier = new Profiteur(++i, "Olivier", "/images/sports/velo.png",
-				"/images/members/olivier.png");
-		FamilyMember maxime = new Profiteur(++i, "Maxime", "/images/sports/volley.png",
-				"/images/members/maxime.png");
-
+		
 		if (!force && dao.count() > 24) {
 			System.out.println("Member table already populated !");
 			return;
 		}
-		
+
+		int i = 0;
+
+		FamilyMember christian = new Organisateur(++i, "Christian", "/images/sports/arc.png",
+				"/images/members/christian.gif", "christian.theou@gmail.com");
+		FamilyMember francoise = new Profiteur(++i, "Françoise", "/images/sports/badminton.png",
+				"/images/members/francoise.gif");
+		FamilyMember magali = new Organisateur(++i, "Magali", "/images/sports/baseball.png",
+				"/images/members/magali.gif", "magali.theou@gmail.com");
+		FamilyMember alexandre = new Organisateur(++i, "Alexandre", "/images/sports/basket.png",
+				"/images/members/alexandre.gif", "alexandre@borgoltz.com");
+		FamilyMember maiann = new Organisateur(++i, "Maiann", "/images/sports/bmx.png", "/images/members/maiann.gif",
+				"maiann.borgoltz@gmail.com");
+		FamilyMember louis = new Profiteur(++i, "Louis", "/images/sports/escalade.png", "/images/members/louis.gif");
+		FamilyMember francois = new Organisateur(++i, "François", "/images/sports/danse.png",
+				"/images/members/francois.gif", "f.theou@netc.fr");
+		FamilyMember chlouchlou = new Organisateur(++i, "Chlouchlou", "/images/sports/yoga.png",
+				"/images/members/chlouchlou.gif", "chloe.lahaye@free.fr");
+		FamilyMember colin = new Profiteur(++i, "Colin", "/images/sports/foot.png", "/images/members/colin.gif");
+		FamilyMember elsa = new Profiteur(++i, "Elsa", "/images/sports/golf.png", "/images/members/elsa.gif");
+		FamilyMember delphine = new Organisateur(++i, "Delphine", "/images/sports/grs.png",
+				"/images/members/delphine.gif", "delf.theou@orange.fr");
+		FamilyMember benjamin = new Organisateur(++i, "Benjamin", "/images/sports/hand.png",
+				"/images/members/benjamin.gif", "benjamin.casimir@orange.fr");
+		FamilyMember chiara = new Profiteur(++i, "Chiara", "/images/sports/hauteur.png", "/images/members/chiara.gif");
+		FamilyMember raphael = new Profiteur(++i, "Raphaël", "/images/sports/hockey.png",
+				"/images/members/raphael.gif");
+		FamilyMember titouan = new Profiteur(++i, "Titouan", "/images/sports/karate.png",
+				"/images/members/titouan.gif");
+		FamilyMember dun = new Profiteur(++i, "Dunvael", "/images/sports/muscu.png", "/images/members/dun.gif");
+		FamilyMember philippe = new Organisateur(++i, "Philippe", "/images/sports/natation.png",
+				"/images/members/philippe.gif", "keltia56@gmail.com");
+		FamilyMember colette = new Organisateur(++i, "Colette", "/images/sports/patinage.png",
+				"/images/members/colette.gif", "donadiocolette@gmail.com");
+		FamilyMember maelle = new Profiteur(++i, "Maëlle", "/images/sports/perche.png", "/images/members/maelle.gif");
+		FamilyMember lorenzo = new Profiteur(++i, "Lorenzo", "/images/sports/skate.png", "/images/members/lorenzo.gif");
+		FamilyMember jb = new Organisateur(++i, "Jean-Baptiste", "/images/sports/ski.png", "/images/members/jb.gif",
+				"jb.theou@gmail.com");
+		FamilyMember rebecca = new Organisateur(++i, "Rebecca", "/images/sports/surf.png",
+				"/images/members/rebecca.gif", "rebeccag000@gmail.com");
+		FamilyMember elena = new Profiteur(++i, "Elena", "/images/sports/tennis.png", "/images/members/elena.gif");
+		FamilyMember olivier = new Profiteur(++i, "Olivier", "/images/sports/velo.png", "/images/members/olivier.gif");
+		FamilyMember maxime = new Profiteur(++i, "Maxime", "/images/sports/volley.png", "/images/members/maxime.gif");
+
 //		dao.deleteAll();
 
 		christian.setNbMissions(3);
