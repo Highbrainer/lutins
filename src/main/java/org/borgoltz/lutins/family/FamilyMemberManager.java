@@ -46,46 +46,46 @@ public class FamilyMemberManager {
 
 		int i = 0;
 
-		FamilyMember christian = new Organisateur(++i, "Christian", "/images/sports/arc.png",
-				"/images/members/christian.gif", "christian.theou@gmail.com");
-		FamilyMember francoise = new Profiteur(++i, "Françoise", "/images/sports/badminton.png",
-				"/images/members/francoise.gif");
-		FamilyMember magali = new Organisateur(++i, "Magali", "/images/sports/baseball.png",
-				"/images/members/magali.gif", "magali.theou@gmail.com");
-		FamilyMember alexandre = new Organisateur(++i, "Alexandre", "/images/sports/basket.png",
-				"/images/members/alexandre.gif", "alexandre@borgoltz.com");
-		FamilyMember maiann = new Organisateur(++i, "Maiann", "/images/sports/bmx.png", "/images/members/maiann.gif",
+		FamilyMember christian = new Organisateur(++i, "Christian", "/images/sports/arc.webp",
+				"/images/members/christian.webp", "christian.theou@gmail.com");
+		FamilyMember francoise = new Profiteur(++i, "Françoise", "/images/sports/badminton.webp",
+				"/images/members/francoise.webp");
+		FamilyMember magali = new Organisateur(++i, "Magali", "/images/sports/baseball.webp",
+				"/images/members/magali.webp", "magali.theou@gmail.com");
+		FamilyMember alexandre = new Organisateur(++i, "Alexandre", "/images/sports/basket.webp",
+				"/images/members/alexandre.webp", "alexandre@borgoltz.com");
+		FamilyMember maiann = new Organisateur(++i, "Maiann", "/images/sports/bmx.webp", "/images/members/maiann.webp",
 				"maiann.borgoltz@gmail.com");
-		FamilyMember louis = new Profiteur(++i, "Louis", "/images/sports/escalade.png", "/images/members/louis.gif");
-		FamilyMember francois = new Organisateur(++i, "François", "/images/sports/danse.png",
-				"/images/members/francois.gif", "f.theou@netc.fr");
-		FamilyMember chlouchlou = new Organisateur(++i, "Chlouchlou", "/images/sports/yoga.png",
-				"/images/members/chlouchlou.gif", "chloe.lahaye@free.fr");
-		FamilyMember colin = new Profiteur(++i, "Colin", "/images/sports/foot.png", "/images/members/colin.gif");
-		FamilyMember elsa = new Profiteur(++i, "Elsa", "/images/sports/golf.png", "/images/members/elsa.gif");
-		FamilyMember delphine = new Organisateur(++i, "Delphine", "/images/sports/grs.png",
-				"/images/members/delphine.gif", "delf.theou@orange.fr");
-		FamilyMember benjamin = new Organisateur(++i, "Benjamin", "/images/sports/hand.png",
-				"/images/members/benjamin.gif", "benjamin.casimir@orange.fr");
-		FamilyMember chiara = new Profiteur(++i, "Chiara", "/images/sports/hauteur.png", "/images/members/chiara.gif");
-		FamilyMember raphael = new Profiteur(++i, "Raphaël", "/images/sports/hockey.png",
-				"/images/members/raphael.gif");
-		FamilyMember titouan = new Profiteur(++i, "Titouan", "/images/sports/karate.png",
-				"/images/members/titouan.gif");
-		FamilyMember dun = new Profiteur(++i, "Dunvael", "/images/sports/muscu.png", "/images/members/dun.gif");
-		FamilyMember philippe = new Organisateur(++i, "Philippe", "/images/sports/natation.png",
-				"/images/members/philippe.gif", "keltia56@gmail.com");
-		FamilyMember colette = new Organisateur(++i, "Colette", "/images/sports/patinage.png",
-				"/images/members/colette.gif", "donadiocolette@gmail.com");
-		FamilyMember maelle = new Profiteur(++i, "Maëlle", "/images/sports/perche.png", "/images/members/maelle.gif");
-		FamilyMember lorenzo = new Profiteur(++i, "Lorenzo", "/images/sports/skate.png", "/images/members/lorenzo.gif");
-		FamilyMember jb = new Organisateur(++i, "Jean-Baptiste", "/images/sports/ski.png", "/images/members/jb.gif",
+		FamilyMember louis = new Profiteur(++i, "Louis", "/images/sports/escalade.webp", "/images/members/louis.webp");
+		FamilyMember francois = new Organisateur(++i, "François", "/images/sports/danse.webp",
+				"/images/members/francois.webp", "f.theou@netc.fr");
+		FamilyMember chlouchlou = new Organisateur(++i, "Chlouchlou", "/images/sports/yoga.webp",
+				"/images/members/chlouchlou.webp", "chloe.lahaye@free.fr");
+		FamilyMember colin = new Profiteur(++i, "Colin", "/images/sports/foot.webp", "/images/members/colin.webp");
+		FamilyMember elsa = new Profiteur(++i, "Elsa", "/images/sports/golf.webp", "/images/members/elsa.webp");
+		FamilyMember delphine = new Organisateur(++i, "Delphine", "/images/sports/grs.webp",
+				"/images/members/delphine.webp", "delf.theou@orange.fr");
+		FamilyMember benjamin = new Organisateur(++i, "Benjamin", "/images/sports/hand.webp",
+				"/images/members/benjamin.webp", "benjamin.casimir@orange.fr");
+		FamilyMember chiara = new Profiteur(++i, "Chiara", "/images/sports/hauteur.webp", "/images/members/chiara.webp");
+		FamilyMember raphael = new Profiteur(++i, "Raphaël", "/images/sports/hockey.webp",
+				"/images/members/raphael.webp");
+		FamilyMember titouan = new Profiteur(++i, "Titouan", "/images/sports/karate.webp",
+				"/images/members/titouan.webp");
+		FamilyMember dun = new Profiteur(++i, "Dunvael", "/images/sports/muscu.webp", "/images/members/dun.webp");
+		FamilyMember philippe = new Organisateur(++i, "Philippe", "/images/sports/natation.webp",
+				"/images/members/philippe.webp", "keltia56@gmail.com");
+		FamilyMember colette = new Organisateur(++i, "Colette", "/images/sports/patinage.webp",
+				"/images/members/colette.webp", "donadiocolette@gmail.com");
+		FamilyMember maelle = new Profiteur(++i, "Maëlle", "/images/sports/perche.webp", "/images/members/maelle.webp");
+		FamilyMember lorenzo = new Profiteur(++i, "Lorenzo", "/images/sports/skate.webp", "/images/members/lorenzo.webp");
+		FamilyMember jb = new Organisateur(++i, "Jean-Baptiste", "/images/sports/ski.webp", "/images/members/jb.webp",
 				"jb.theou@gmail.com");
-		FamilyMember rebecca = new Organisateur(++i, "Rebecca", "/images/sports/surf.png",
-				"/images/members/rebecca.gif", "rebeccag000@gmail.com");
-		FamilyMember elena = new Profiteur(++i, "Elena", "/images/sports/tennis.png", "/images/members/elena.gif");
-		FamilyMember olivier = new Profiteur(++i, "Olivier", "/images/sports/velo.png", "/images/members/olivier.gif");
-		FamilyMember maxime = new Profiteur(++i, "Maxime", "/images/sports/volley.png", "/images/members/maxime.gif");
+		FamilyMember rebecca = new Organisateur(++i, "Rebecca", "/images/sports/surf.webp",
+				"/images/members/rebecca.webp", "rebeccag000@gmail.com");
+		FamilyMember elena = new Profiteur(++i, "Elena", "/images/sports/tennis.webp", "/images/members/elena.webp");
+		FamilyMember olivier = new Profiteur(++i, "Olivier", "/images/sports/velo.webp", "/images/members/olivier.webp");
+		FamilyMember maxime = new Profiteur(++i, "Maxime", "/images/sports/volley.webp", "/images/members/maxime.webp");
 
 //		dao.deleteAll();
 
