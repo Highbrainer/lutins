@@ -13,7 +13,14 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class LutinsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LutinsApplication.class, args);
+		try {
+			SpringApplication.run(LutinsApplication.class, args);
+		} catch (RuntimeException e) {
+			if (!e.getClass().getName().equals("org.springframework.boot.devtools.restart.SilentExitExceptionHandler$SilentExitException")) {
+				throw e;
+			}
+			// OK It's just spring restarting...
+		}
 	}
 
 	@Autowired

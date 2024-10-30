@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import org.borgoltz.lutins.configuration.SecurityConfiguration;
 import org.borgoltz.lutins.family.FamilyMember;
 import org.borgoltz.lutins.family.FamilyMemberDAO;
 import org.borgoltz.lutins.family.FamilyMemberManager;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LutinsController {
 
 	private Map<String, LocalDateTime> usersLastAccess = new HashMap<>();
+	
+	private Map<String, FamilyMember> userCache = new HashMap<String, FamilyMember>();
 
 	@Autowired
 	private FamilyMemberManager familyMemberManager;
@@ -35,20 +39,23 @@ public class LutinsController {
 	@Autowired
 	private FamilyMemberDAO dao;
 
-	@GetMapping({ "/", "/home" })
+	@GetMapping({ "/", "/home" })	
 	public String getCurrentUser(@AuthenticationPrincipal User user, Model model) {
 		if (null == user) {
 			return "login";
 		}
 		String username = user.getUsername();
 
-		FamilyMember connected = dao.findByNameIgnoreCase(username);
+		FamilyMember connected = userCache.computeIfAbsent(username, login -> dao.findByNameIgnoreCase(login));
 
 		model.addAttribute("username", username);
 		model.addAttribute("roles",
 				user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet()));
 		model.addAttribute("user", connected);
 		model.addAttribute("lastAccess", usersLastAccess.get(username));
+		
+		var version = getClass().getPackage().getImplementationVersion();
+		model.addAttribute("version", version);
 
 		usersLastAccess.put(username, LocalDateTime.now());
 
@@ -69,6 +76,24 @@ public class LutinsController {
 		model.addAttribute("comparator",
 				Comparator.comparing(FamilyMember::isOrganisateur).reversed().thenComparing(FamilyMember::getName));
 		return "avatars";
+	}
+	
+	@RequestMapping("/emailPasswords")
+	String emailPasswords(@AuthenticationPrincipal User user, Model model, @RequestParam(defaultValue = "false") boolean dryRun) {
+		this.dao.findByOrganisateur(true).forEach(lutin -> {
+			String subject = "Mot de passe de Lutin " + lutin.getName();
+			String body = "<div>Bonjour " + lutin.getName() + ",</div>" + 
+					"<div>Voici les identifiants à utiliser pour se connecter à l'application <a href=\"http://lutins.borgoltz.com\">lutins.borgoltz.com</a> :</div>"
+					+ "<table>"
+					+ " <tr><th>Identifiant :</th><td>"+lutin.getName()+"</td></tr>"
+					+ " <tr><th>Mot de passe :</th><td>"+SecurityConfiguration.password(lutin)+"</td></tr>"
+					+ "</table>";
+			System.out.println(subject);
+			System.out.println(body);
+			System.out.println();
+		
+		});
+		return "home";
 	}
 
 	@RequestMapping("/init")

@@ -8,10 +8,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
+   
+    	.bg-2024 {
+    		background-color: #5A9539;
+    		
+    	}
+   
 
         body {
             background-image: url("/images/background.webp");
-            background-position: bottom right 10px;
+            background-position: bottom right 0px;
             background-repeat: no-repeat;
             background-size: 300px;
         }
@@ -29,7 +35,7 @@
 
         }
         
-        @media screen and (min-width: 1250px) and (max-width: 1500px) {
+        @media screen and (min-width: 1250px) /*and (max-width: 1500px)*/ {
 
             body {
                 background-size: 600px;
@@ -63,14 +69,14 @@
         <div class="d-flex p-3 flex-wrap align-content-start">
             <div class="card border bg-light m-2" >
                 <div class="card-body">
-                    <h5 class="card-title bg-primary text-white p-3">Adresse email de contact</h5>
+                    <h5 class="card-title bg-2024 text-white p-3">Adresse email de contact</h5>
                     <p class="card-text text-center"><code th:text="${user.email}" /></p>
                 </div>
             </div>
 
             <div class="card border bg-light m-2" th:if="${user.incompatibleMembers.size()}">
                 <div class="card-body bg-light">
-                    <h5 class="card-title bg-primary text-white p-3">Je ne peux pas être le lutin de</h5>
+                    <h5 class="card-title bg-2024 text-white p-3">Je ne peux pas être le lutin de</h5>
                     <p class="card-text"><span th:each="incompat : ${user.incompatibleMembers}"
                             style="vertical-align: top;">
                             <!-- <span th:text="${incompat.name}"/> -->
@@ -82,7 +88,7 @@
         <div class="d-flex p-3 flex-wrap align-content-start">
             <div class="card border bg-light m-2">
                 <div class="card-body">
-                    <h5 class="card-title bg-primary text-white p-3">Mon sport <font size="-4"><i>chut, c'est
+                    <h5 class="card-title bg-2024 text-white p-3">Ma fleur <font size="-4"><i>chut, c'est
                                 secret !</i></font>
                     </h5>
                     <p class="card-textb text-center">
@@ -93,7 +99,7 @@
 
             <div class="card border bg-light m-2" id="missions">
                 <div class="card-body">
-                    <h5 class="card-title bg-primary text-white p-3">Mes
+                    <h5 class="card-title bg-2024 text-white p-3">Mes
                         <font th:text="${user.nbMissions}" /> missions
                     </h5>
                     <p class="card-text text-center"><span th:each="profiteur : ${user.missions}"
@@ -119,7 +125,7 @@
 
         </div>
     
-	    <footer style="text-align: right;" th:with="version=${user.getClass().getPackage().getImplementationVersion()}"><span th:unless="${version == null}" th:text="${'Version ' + (version ?: 'inconnue')}"></span></footer>
+	    <footer style="text-align: left;"><span th:unless="${version == null}" th:text="${'Version ' + (version ?: 'inconnue')}"></span></footer>
 
     </div>
 
