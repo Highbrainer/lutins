@@ -163,10 +163,6 @@ public class FamilyMemberManager {
 	}
 
 	public List<FamilyMember> listFamilyMembers() {
-		// List<FamilyMember> ret = this.jdbcTemplate.query("select * from " +
-		// this.tablename_members + "",
-		// new BeanPropertyRowMapper<FamilyMember>(FamilyMember.class));
-		// return ret;
 		return dao.findAll();
 	}
 }

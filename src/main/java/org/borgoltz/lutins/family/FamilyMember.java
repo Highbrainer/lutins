@@ -2,11 +2,12 @@ package org.borgoltz.lutins.family;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Reference;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -28,11 +29,9 @@ public class FamilyMember {
 
     private int nbMissions = 0;
 
-    @Reference(FamilyMember.class)
-    private Set<FamilyMember> incompatibleMembers = new HashSet<>();
+    private Set<Long> incompatibleMembers = new HashSet<>();
 
-	@Reference(FamilyMember.class)
-    private Set<FamilyMember> missions = new HashSet<>();
+    private Set<Long> missions = new HashSet<>();
 
     public FamilyMember() {
 
@@ -87,12 +86,20 @@ public class FamilyMember {
         this.id = id;
     }
 
-    public Set<FamilyMember> getIncompatibleMembers() {
+    public Set<Long> getIncompatibleMembers() {
         return incompatibleMembers;
     }
 
-    public Set<FamilyMember> getMissions() {
+    public Set<Long> getMissions() {
         return missions;
+    }
+
+    public List<FamilyMember> getIncompatibleMembersAsObjects(FamilyMemberDAO dao) {
+        return incompatibleMembers.stream().map(dao::findById).map(Optional::get).toList();
+    }
+
+    public List<FamilyMember> getMissionsAsObjects(FamilyMemberDAO dao) {
+        return missions.stream().map(dao::findById).map(Optional::get).toList();
     }
 
     public String getName() {
@@ -128,11 +135,11 @@ public class FamilyMember {
     }
 
     public void addIncompatible(FamilyMember... members) {
-        getIncompatibleMembers().addAll(Arrays.asList(members));
+        getIncompatibleMembers().addAll(Arrays.asList(members).stream().map(FamilyMember::getId).toList());
     }
 
     public void addMission(FamilyMember... missions) {
-        getMissions().addAll(Arrays.asList(missions));
+        getMissions().addAll(Arrays.asList(missions).stream().map(FamilyMember::getId).toList());
     }
 
     @Override

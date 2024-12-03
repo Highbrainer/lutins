@@ -52,6 +52,7 @@ public class LutinsController {
 		model.addAttribute("roles",
 				user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet()));
 		model.addAttribute("user", connected);
+		model.addAttribute("dao", dao);
 		model.addAttribute("lastAccess", usersLastAccess.get(username));
 		
 		var version = getClass().getPackage().getImplementationVersion();
@@ -138,7 +139,7 @@ public class LutinsController {
 				throw new IllegalStateException("Ce membre de la famille a déjà été choisi par quelqu'un d'autre !");
 			}
 		}
-		org.getMissions().add(profiteur);
+		org.getMissions().add(profiteur.getId());
 		dao.save(org);
 	}
 
@@ -157,12 +158,12 @@ public class LutinsController {
 		getCurrentUser(user, model);
 		FamilyMember me = (FamilyMember) model.getAttribute("user");
 		List<FamilyMember> family = this.familyMemberManager.listFamilyMembers();
-		Set<FamilyMember> alredayAffected = family.stream().map(FamilyMember::getMissions).flatMap(Collection::stream)
+		Set<Long> alredayAffected = family.stream().map(FamilyMember::getMissions).flatMap(Collection::stream)
 				.collect(Collectors.toSet());
-		family.removeAll(alredayAffected);
+		family.removeIf(candidate -> alredayAffected.contains(candidate.getId()));
 		family.remove(me);
-		family.removeAll(me.getIncompatibleMembers());
-		family.removeAll(me.getMissions());
+		family.removeIf(candidate -> me.getIncompatibleMembers().contains(candidate.getId()));
+		family.removeIf(candidate -> me.getMissions().contains(candidate.getId()));
 
 		Collections.shuffle(family);
 
@@ -170,6 +171,17 @@ public class LutinsController {
 		model.addAttribute("comparator",
 				Comparator.comparing(FamilyMember::isOrganisateur).reversed().thenComparing(FamilyMember::getName));
 		return "choice";
+	}	
+	
+	@RequestMapping("/flowers")
+	String flowers(@AuthenticationPrincipal User user, Model model) {
+		getCurrentUser(user, model);
+		FamilyMember me = (FamilyMember) model.getAttribute("user");
+		
+		var flowers = IntStream.range(1, 39).mapToObj("%02d"::formatted).toList();
+
+		model.addAttribute("flowers", flowers);
+		return "flowers";
 	}
 
 }

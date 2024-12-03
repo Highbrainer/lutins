@@ -77,7 +77,7 @@
             <div class="card border bg-light m-2" th:if="${user.incompatibleMembers.size()}">
                 <div class="card-body bg-light">
                     <h5 class="card-title bg-2024 text-white p-3">Je ne peux pas être le lutin de</h5>
-                    <p class="card-text"><span th:each="incompat : ${user.incompatibleMembers}"
+                    <p class="card-text"><span th:each="incompat : ${user.getIncompatibleMembersAsObjects(dao)}"
                             style="vertical-align: top;">
                             <!-- <span th:text="${incompat.name}"/> -->
                             <img class="photo" th:src="${incompat.image}" height="342px" />

@@ -122,11 +122,11 @@
           <!-- </label> -->
           <span th:if="${member.incompatibleMembers.size()}">Nombre de missions : <font th:text="${member.nbMissions}" />.</span>
           <span th:if="${member.incompatibleMembers.size()}">Ne peut pas s'occuper de <font th:text="${member.incompatibleMembers.size()}"/> personnes&nbsp;:
-          <ul th:each="incompat : ${member.incompatibleMembers}">
+          <ul th:each="incompat : ${member.getIncompatibleMembersAsObjects(dao)}">
             <li th:text="${incompat.name}"></li>
           </ul>
           </span>
-          <img  th:each="mission : ${member.missions}" th:src="${mission.image}" zzzwidth="50%" style="vertical-align: top;" height="342px" th:alt="${mission.name}" th:title="${mission.name}" />
+          <img  th:each="mission : ${member.getMissionsAsObjects(dao)}" th:src="${mission.image}" zzzwidth="50%" style="vertical-align: top;" height="342px" th:alt="${mission.name}" th:title="${mission.name}" />
           <hr/>
         </div>
     </form>

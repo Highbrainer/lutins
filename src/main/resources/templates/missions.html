@@ -91,9 +91,9 @@
             <div class="card border bg-light m-2" id="missions">
                 <div class="card-body">
                     <h5 class="card-title bg-primary text-white p-3">Ses
-                        <font th:text="${organisateur.nbMissions}" /> missions : <font th:each="mission, iter : ${organisateur.missions}" th:text="|${(!iter.first && !iter.last)?', ':''}${iter.last&&!iter.first?' et ':''}${mission.name}|" />
+                        <font th:text="${organisateur.nbMissions}" /> missions : <font th:each="mission, iter : ${organisateur.getMissionsAsObjects(dao)}" th:text="|${(!iter.first && !iter.last)?', ':''}${iter.last&&!iter.first?' et ':''}${mission.name}|" />
                     </h5>
-                    <p class="card-text text-center"><span th:each="profiteur : ${organisateur.missions}"
+                    <p class="card-text text-center"><span th:each="profiteur : ${organisateur.getMissionsAsObjects(dao)}"
                             style="vertical-align: top;">
                             <!-- <span th:text="${incompat.name}"/> -->
                             <img class="photo" th:src="${profiteur.image}" height="342px" />
