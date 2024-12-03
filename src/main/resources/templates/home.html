@@ -102,7 +102,7 @@
                     <h5 class="card-title bg-2024 text-white p-3">Mes
                         <font th:text="${user.nbMissions}" /> missions
                     </h5>
-                    <p class="card-text text-center"><span th:each="profiteur : ${user.missions}"
+                    <p class="card-text text-center"><span th:each="profiteur : ${user.getMissionsAsObjects(dao)}"
                             style="vertical-align: top;">
                             <!-- <span th:text="${incompat.name}"/> -->
                             <img class="photo" th:src="${profiteur.image}" height="342px" />

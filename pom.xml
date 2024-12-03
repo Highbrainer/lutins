@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>org.borgoltz</groupId>
 	<artifactId>lutins</artifactId>
-	<version>2024.2.0-SNAPSHOT</version>
+	<version>2024.2.1</version>
 	<name>lutins</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
