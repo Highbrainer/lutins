@@ -165,7 +165,9 @@ public class LutinsController {
 		family.removeIf(candidate -> me.getIncompatibleMembers().contains(candidate.getId()));
 		family.removeIf(candidate -> me.getMissions().contains(candidate.getId()));
 
-		Collections.shuffle(family);
+		//Collections.shuffle(family);
+		Collections.sort(family, Comparator.comparing(FamilyMember::getCard));
+		
 
 		model.addAttribute("family", family);
 		model.addAttribute("comparator",

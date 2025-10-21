@@ -39,7 +39,7 @@ public class FamilyMemberManager {
 
 	public void initDatabase(boolean force) {
 		
-		if (!force && dao.count() > 22) {
+		if (!force && dao.count() > 23) {
 			System.out.println("Member table already populated !");
 			return;
 		}
@@ -48,50 +48,38 @@ public class FamilyMemberManager {
 
 		int i = 0;
 
-		FamilyMember christian = new Organisateur(++i, "Christian", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/christian.webp", "christian.theou@gmail.com");
-		FamilyMember francoise = new Profiteur(++i, "Françoise", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/francoise.webp");
-		FamilyMember magali = new Organisateur(++i, "Magali", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/magali.webp", "magali.theou@gmail.com");
-		FamilyMember alexandre = new Organisateur(++i, "Alexandre", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/alexandre.webp", "alexandre@borgoltz.com");
-		FamilyMember maiann = new Organisateur(++i, "Maiann", "/images/flowers/%02d.webp".formatted(i), "/images/members/maiann.webp",
-				"maiann.borgoltz@gmail.com");
-		FamilyMember louis = new Profiteur(++i, "Louis", "/images/flowers/%02d.webp".formatted(i), "/images/members/louis.webp");
-		FamilyMember francois = new Organisateur(++i, "François", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/francois.webp", "f.theou@netc.fr");
-		FamilyMember colin = new Profiteur(++i, "Colin", "/images/flowers/%02d.webp".formatted(i), "/images/members/colin.webp");
-		FamilyMember elsa = new Profiteur(++i, "Elsa", "/images/flowers/%02d.webp".formatted(i), "/images/members/elsa.webp");
-		FamilyMember delphine = new Organisateur(++i, "Delphine", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/delphine.webp", "delf.theou@orange.fr");
-		FamilyMember benjamin = new Organisateur(++i, "Benjamin", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/benjamin.webp", "benjamin.casimir@orange.fr");
-		FamilyMember chiara = new Organisateur(++i, "Chiara", "/images/flowers/%02d.webp".formatted(i), "/images/members/chiara.webp", "chiaravrin@gmail.com");
-		FamilyMember raphael = new Profiteur(++i, "Raphaël", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/raphael.webp");
-		FamilyMember titouan = new Profiteur(++i, "Titouan", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/titouan.webp");
-		FamilyMember dun = new Profiteur(++i, "Dunvael", "/images/flowers/%02d.webp".formatted(i), "/images/members/dun.webp");
-		FamilyMember philippe = new Organisateur(++i, "Philippe", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/philippe.webp", "keltia56@gmail.com");
-		FamilyMember colette = new Organisateur(++i, "Colette", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/colette.webp", "donadiocolette@gmail.com");
-		FamilyMember maelle = new Profiteur(++i, "Maëlle", "/images/flowers/%02d.webp".formatted(i), "/images/members/maelle.webp");
-		FamilyMember lorenzo = new Profiteur(++i, "Lorenzo", "/images/flowers/%02d.webp".formatted(i), "/images/members/lorenzo.webp");
-		FamilyMember jb = new Organisateur(++i, "Jean-Baptiste", "/images/flowers/%02d.webp".formatted(i), "/images/members/jb.webp",
-				"jb.theou@gmail.com");
-		FamilyMember rebecca = new Organisateur(++i, "Rebecca", "/images/flowers/%02d.webp".formatted(i),
-				"/images/members/rebecca.webp", "rebeccag000@gmail.com");
-//		FamilyMember elena = new Profiteur(++i, "Elena", "/images/flowers/%02d.webp".formatted(i), "/images/members/elena.webp");
-		FamilyMember olivier = new Profiteur(++i, "Olivier", "/images/flowers/%02d.webp".formatted(i), "/images/members/olivier.webp");
-		FamilyMember maxime = new Profiteur(++i, "Maxime", "/images/flowers/%02d.webp".formatted(i), "/images/members/maxime.webp");
+		FamilyMember jb = new Organisateur(++i, "Jean-Baptiste", "/images/calendrier/%02d.webp".formatted(i), "/images/members/jb.webp", "jb.theou@gmail.com");
+		FamilyMember chiara = new Profiteur(++i, "Chiara", "/images/calendrier/%02d.webp".formatted(i), "/images/members/chiara.webp"/*, "chiaravrin@gmail.com"*/);
+		FamilyMember philippe = new Organisateur(++i, "Philippe", "/images/calendrier/%02d.webp".formatted(i), "/images/members/philippe.webp", "keltia56@gmail.com");
+		FamilyMember louis = new Profiteur(++i, "Louis", "/images/calendrier/%02d.webp".formatted(i), "/images/members/louis.webp");
+		FamilyMember elsa = new Profiteur(++i, "Elsa", "/images/calendrier/%02d.webp".formatted(i), "/images/members/elsa.webp");
+		FamilyMember dun = new Profiteur(++i, "Dunvael", "/images/calendrier/%02d.webp".formatted(i), "/images/members/dun.webp");
+		FamilyMember olivier = new Profiteur(++i, "Olivier", "/images/calendrier/%02d.webp".formatted(i), "/images/members/olivier.webp");
+		FamilyMember alexandre = new Organisateur(++i, "Alexandre", "/images/calendrier/%02d.webp".formatted(i), "/images/members/alexandre.webp", "alexandre@borgoltz.com");
+		FamilyMember colette = new Organisateur(++i, "Colette", "/images/calendrier/%02d.webp".formatted(i), "/images/members/colette.webp", "donadiocolette@gmail.com");
+		FamilyMember francoise = new Profiteur(++i, "Françoise", "/images/calendrier/%02d.webp".formatted(i), "/images/members/francoise.webp");
+		FamilyMember colin = new Profiteur(++i, "Colin", "/images/calendrier/%02d.webp".formatted(i), "/images/members/colin.webp");
+		FamilyMember titouan = new Profiteur(++i, "Titouan", "/images/calendrier/%02d.webp".formatted(i), "/images/members/titouan.webp");
+		FamilyMember rebecca = new Organisateur(++i, "Rebecca", "/images/calendrier/%02d.webp".formatted(i), "/images/members/rebecca.webp", "rebeccag000@gmail.com");
+		FamilyMember delphine = new Organisateur(++i, "Delphine", "/images/calendrier/%02d.webp".formatted(i), "/images/members/delphine.webp", "delf.theou@orange.fr");
+		FamilyMember magali = new Organisateur(++i, "Magali", "/images/calendrier/%02d.webp".formatted(i),	"/images/members/magali.webp", "magali.theou@gmail.com");
+		FamilyMember maelle = new Profiteur(++i, "Maëlle", "/images/calendrier/%02d.webp".formatted(i), "/images/members/maelle.webp");
+		FamilyMember maxime = new Profiteur(++i, "Maxime", "/images/calendrier/%02d.webp".formatted(i), "/images/members/maxime.webp");
+		FamilyMember francois = new Organisateur(++i, "François", "/images/calendrier/%02d.webp".formatted(i), "/images/members/francois.webp", "f.theou@netc.fr");
+		FamilyMember christian = new Organisateur(++i, "Christian", "/images/calendrier/%02d.webp".formatted(i), "/images/members/christian.webp", "christian.theou@gmail.com");
+		FamilyMember lorenzo = new Profiteur(++i, "Lorenzo", "/images/calendrier/%02d.webp".formatted(i), "/images/members/lorenzo.webp");
+		FamilyMember maiann = new Organisateur(++i, "Maiann", "/images/calendrier/%02d.webp".formatted(i), "/images/members/maiann.webp", "maiann.borgoltz@gmail.com");
+		FamilyMember benjamin = new Organisateur(++i, "Benjamin", "/images/calendrier/%02d.webp".formatted(i), "/images/members/benjamin.webp", "benjamin.casimir@orange.fr");
+		FamilyMember mattia = new Profiteur(++i, "Mattia", "/images/calendrier/%02d.webp".formatted(i), "/images/members/mattia.webp");
+		FamilyMember raphael = new Profiteur(++i, "Raphaël", "/images/calendrier/%02d.webp".formatted(i), "/images/members/raphael.webp");
+		
+//		FamilyMember elena = new Profiteur(++i, "Elena", "/images/calendrier/%02d.webp".formatted(i), "/images/members/elena.webp");
 
 //		dao.deleteAll();
 
 		christian.setNbMissions(3);
-		maiann.setNbMissions(1);
-		chiara.setNbMissions(1);
+		magali.setNbMissions(3);
+		maiann.setNbMissions(2);
 		
 		magali.setAdmin(true);
 		alexandre.setAdmin(true);
@@ -120,12 +108,13 @@ public class FamilyMemberManager {
 //		dao.save(elena);
 		dao.save(olivier);
 		dao.save(maxime);
+		dao.save(mattia);
 
 		jb.addIncompatible(rebecca, /*elena,*/ olivier, maxime);
 		rebecca.addIncompatible(jb, /*elena,*/ olivier, maxime);
 
-		philippe.addIncompatible(colette, maelle, lorenzo);
-		colette.addIncompatible(philippe, maelle, lorenzo);
+		philippe.addIncompatible(colette, maelle, lorenzo, mattia);
+		colette.addIncompatible(philippe, maelle, lorenzo, mattia);
 
 		delphine.addIncompatible(benjamin, chiara, raphael, titouan, dun);
 		benjamin.addIncompatible(delphine, chiara, raphael, titouan, dun);
